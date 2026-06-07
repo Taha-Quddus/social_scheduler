@@ -14,6 +14,12 @@ const Sidebar = ({
   isOpen: boolean;
   setIsOpen: (val: boolean) => void;
 }) => {
+  const { logout, user } = {
+    logout: () => {
+      window.location.href = "/";
+    },
+    user: { name: "John Doe", email: "johndoe@example.com" },
+  };
   const location = useLocation();
   const navItems = [
     { name: "Dashboard", icon: LayoutDashboardIcon, path: "/dashboard" },
@@ -75,6 +81,19 @@ bg-red-500"
           );
         })}
       </nav>
+      <div className="p-4 border-t border-slate-100">
+        <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors">
+          <div className="size-8 rounded-full bg-gradient-to-br from-red-400 to-pink-400 flex items-center justify-center text-white text-sm font-medium shrink-0">
+            {user?.name?.charAt(0).toUpperCase() || "U"}
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="text-sm text-slate-800 truncate">{user?.name}</div>
+
+            <div className="text-xs text-slate-400 truncate">{user?.email}</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
