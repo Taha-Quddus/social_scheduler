@@ -1,13 +1,22 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import React, { useState } from "react";
+import { useState } from "react";
 import { MenuIcon } from "lucide-react";
 
+const pageTitles: Record<string, string> = {
+  "/dashboard": "Dashboard",
+  "/accounts": "Social Accounts",
+  "/schedule": "Post Scheduler",
+  "/ai-composer": "AI Composer",
+};
+
 const Layout = () => {
+  const location = useLocation();
+  const title = pageTitles[location.pathname] || "SocialAI";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="fles h-screen bg-slate-50">
+    <div className="flex h-screen bg-slate-50">
       {isMobileMenuOpen && (
         <div
           className="fixed insert-0 bg-slate-900/50 z-40 md:hidden"
@@ -30,7 +39,7 @@ md:px-8 gap-4"
             <MenuIcon className="size-6" />
           </button>
           <div>
-            <h1 className="text-slate-900">Dashboard</h1>
+            <h1 className="text-slate-900">{title}</h1>
             <p className="text-sm text-slate-400 hidden sm:block">
               Manage and automate your social presence
             </p>

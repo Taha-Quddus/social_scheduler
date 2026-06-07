@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { Layout } from "lucide-react";
+import Layout from "./components/Home/Layout";
 import Dashboard from "./pages/Dashboard";
 import Accounts from "./pages/Accounts";
 import Scheduler from "./pages/Scheduler";
@@ -13,11 +13,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<Layout />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/accounts" element={<Accounts />} />
-        <Route path="/schedule" element={<Scheduler />} />
-        <Route path="/ai-composer" element={<AIComposer />} />
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/accounts" element={<Accounts />} />
+          <Route path="/schedule" element={<Scheduler />} />
+          <Route path="/ai-composer" element={<AIComposer />} />
+        </Route>
       </Routes>
     </>
   );
