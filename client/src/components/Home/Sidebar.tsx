@@ -1,10 +1,11 @@
 import {
   CalendarDaysIcon,
   LayoutDashboardIcon,
+  LogOutIcon,
   UserIcon,
   Wand2Icon,
 } from "lucide-react";
-import React from "react";
+
 import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = ({
@@ -93,6 +94,15 @@ bg-red-500"
             <div className="text-xs text-slate-400 truncate">{user?.email}</div>
           </div>
         </div>
+        <button
+          onClick={logout}
+          className="mt-1 flex items-center gap-2 px-3 py-2 w-full
+rounded text-smtext-slate-500 hover:bg-red-50 hover: text-red-500 transition-al
+duration-150"
+        >
+          <LogOutIcon className="size-4" />
+          Sign Out
+        </button>
       </div>
     </div>
   );
